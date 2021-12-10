@@ -59,13 +59,23 @@
 }
 .chooseButton {
   border-radius: 50px;
-  padding: 20px 50px;
+  padding: 20px 20px;
   font-family: Roboto;
-  width: 200px;
+  width: 150px;
   max-width: 200px;
   border: none;
   font-weight: 500;
   margin-left: 2%;
   margin-top: 3%;
   background-color: #fff;
+}
+
+.show {
+  animation-name: show;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+@keyframes show {
+  0% { filter: opacity(0) }
+  100% { filter: opacity(0)  }
 }

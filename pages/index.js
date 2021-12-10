@@ -103,7 +103,7 @@ const Asker = ({}) => {
             </>
           )
           break;
-          
+
       default:
         return(
           <>
@@ -151,7 +151,7 @@ const Button = ({ text , counter , setterCount , setCallMe}) => {
 
   return(
 
-    <button onClick = { handleClick } className = { styles.chooseButton }>
+    <button onClick = { handleClick } className = {`${ styles.chooseButton } ${ styles.show }`}>
       {text}
     </button>
 

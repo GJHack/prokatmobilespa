@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
+
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -12,58 +14,147 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <h1>АВТОПРОКАТ</h1>
+        <h2>НАХОДКА</h2>
+        <h3>АВТО ЗА 10 МИНУТ!</h3>
+        <h3>АРЕНДА ОТ 3-Х СУТОК</h3>
+        <Asker />
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
       </footer>
     </div>
   )
+}
+
+const Asker = ({}) => {
+
+  const [counter,setCounter] = useState(0);
+  const [callMe, setCallMe] = useState(false);
+
+  if(!callMe){
+
+    switch(counter) {
+
+      case 0:
+        return(
+
+          <section className = {styles.asker}>
+            <Button text = "Я тороплюсь, позвоните мне" counter = {counter}  setterCount = {setCounter} setCallMe = {setCallMe} />
+            <Button text = "Я выберу машину сам" counter = {counter}  setterCount = {setCounter} />
+          </section>
+
+        )
+        break;
+
+      case 1:
+        return(
+
+          <>
+            <h1>Тип кузова</h1>
+            <section className = {styles.askerTypeCar}>
+              <Button text = "Седан" counter = {counter} setterCount = {setCounter} /> <Button text = "Хэтчбек" counter = {counter} setterCount = {setCounter} /> <Button text = "Универсал" counter = {counter}  setterCount = {setCounter} />
+              <Button text = "Минивен" counter = {counter}  setterCount = {setCounter} /> <Button text = "Кроссовер" counter = {counter}  setterCount = {setCounter} /> <Button text = "Грузовик" counter = {counter}  setterCount = {setCounter} />
+              <Button text = "4WD" counter = {counter} setterCount = {setCounter} /> <Button text = "Гибрид" counter = {counter} setterCount = {setCounter} />
+            </section>
+          </>
+
+        )
+        break;
+
+      case 2:
+        return(
+          <>
+            <h1>Выберите год</h1>
+            <section className = {styles.askerTypeCar}>
+              <>
+              <Button text = "2014" counter = {counter} setterCount = {setCounter} /> <Button text = "2015" counter = {counter} setterCount = {setCounter} /> <Button text = "2016" counter = {counter} setterCount = {setCounter} />
+              </>
+              <>
+              <Button text = "2015" counter = {counter} setterCount = {setCounter} /> <Button text = "2016" counter = {counter} setterCount = {setCounter} /> <Button text = "2017" counter = {counter} setterCount = {setCounter} />
+              </>
+            </section>
+          </>
+        )
+        break;
+
+      case 3:
+        return(
+          <>
+            <h1>Выберите цвет</h1>
+            <section className = {styles.askerTypeCar}>
+              <>
+              <Button text = "Красный" counter = {counter} setterCount = {setCounter} /> <Button text = "Белый" counter = {counter} setterCount = {setCounter} /> <Button text = "Черный" counter = {counter} setterCount = {setCounter} />
+              </>
+            </section>
+          </>
+        )
+        break;
+
+        case 4:
+          return(
+            <>
+              <h1>Выберите цвет</h1>
+              <section className = {styles.askerTypeCar}>
+                <>
+                <Button text = "Красный" counter = {counter} setterCount = {setCounter} /> <Button text = "Белый" counter = {counter} setterCount = {setCounter} /> <Button text = "Черный" counter = {counter} setterCount = {setCounter} />
+                </>
+              </section>
+            </>
+          )
+          break;
+          
+      default:
+        return(
+          <>
+            <h1>Выберите год</h1>
+            <section className = {styles.askerTypeCar}>
+              <h1 className = {styles.centerHeading}>Ну типа, все. Все что я хотел Вам показать :)</h1>
+            </section>
+          </>
+        )
+        break;
+    }
+  } else {
+    return(
+
+      <>
+        <h1 className = {styles.centerHeading}>В течении нескольких минут Вам позвонит наш оператор!</h1>
+      </>
+
+    )
+  }
+
+}
+
+const Button = ({ text , counter , setterCount , setCallMe}) => {
+
+  const handleClick = ( evt ) => {
+
+    if(typeof(setCallMe) == "undefined"){
+
+      let count = counter;
+
+      evt.preventDefault();
+
+      setterCount(++count);
+
+    } else {
+
+      evt.preventDefault();
+
+      setCallMe(true);
+
+    }
+
+  }
+
+  return(
+
+    <button onClick = { handleClick } className = { styles.chooseButton }>
+      {text}
+    </button>
+
+  )
+
 }

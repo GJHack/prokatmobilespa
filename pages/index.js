@@ -29,8 +29,9 @@ export default function Home() {
 
 const Asker = ({}) => {
 
-  const [counter,setCounter] = useState(0);
+  const [counter, setCounter] = useState(0);
   const [callMe, setCallMe] = useState(false);
+  const [data, setData] = useState([""]);
 
   if(!callMe){
 
@@ -40,8 +41,9 @@ const Asker = ({}) => {
         return(
 
           <section className = {styles.asker}>
-            <Button text = "Я тороплюсь, позвоните мне" counter = {counter}  setterCount = {setCounter} setCallMe = {setCallMe} />
-            <Button text = "Я выберу машину сам" counter = {counter}  setterCount = {setCounter} />
+            <Button text = "Я тороплюсь, позвоните мне" data = {data} counter = {counter} dataChanger = {setData} setterCount = {setCounter} setCallMe = {setCallMe} />
+            <Button text = "Я выберу машину сам" data = {data} counter = {counter}  dataChanger = {setData} setterCount = {setCounter} />
+            <span>{data[0]}</span>
           </section>
 
         )
@@ -53,9 +55,10 @@ const Asker = ({}) => {
           <>
             <h1>Тип кузова</h1>
             <section className = {styles.askerTypeCar}>
-              <Button text = "Седан" counter = {counter} setterCount = {setCounter} /> <Button text = "Хэтчбек" counter = {counter} setterCount = {setCounter} /> <Button text = "Универсал" counter = {counter}  setterCount = {setCounter} />
-              <Button text = "Минивен" counter = {counter}  setterCount = {setCounter} /> <Button text = "Кроссовер" counter = {counter}  setterCount = {setCounter} /> <Button text = "Грузовик" counter = {counter}  setterCount = {setCounter} />
-              <Button text = "4WD" counter = {counter} setterCount = {setCounter} /> <Button text = "Гибрид" counter = {counter} setterCount = {setCounter} />
+              <Button text = "Седан" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "Хэтчбек" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "Универсал" data = {data} dataChanger = {setData} counter = {counter}  setterCount = {setCounter} />
+              <Button text = "Минивен" data = {data} dataChanger = {setData} counter = {counter}  setterCount = {setCounter} /> <Button text = "Кроссовер" data = {data} dataChanger = {setData} counter = {counter}  setterCount = {setCounter} /> <Button text = "Грузовик" data = {data}  dataChanger = {setData} counter = {counter}  setterCount = {setCounter} />
+              <Button text = "4WD" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "Гибрид" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} />
+              <span>{data}</span>
             </section>
           </>
 
@@ -68,11 +71,12 @@ const Asker = ({}) => {
             <h1>Выберите год</h1>
             <section className = {styles.askerTypeCar}>
               <>
-              <Button text = "2014" counter = {counter} setterCount = {setCounter} /> <Button text = "2015" counter = {counter} setterCount = {setCounter} /> <Button text = "2016" counter = {counter} setterCount = {setCounter} />
+              <Button text = "2014" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "2015" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "2016" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} />
               </>
               <>
-              <Button text = "2015" counter = {counter} setterCount = {setCounter} /> <Button text = "2016" counter = {counter} setterCount = {setCounter} /> <Button text = "2017" counter = {counter} setterCount = {setCounter} />
+              <Button text = "2015" data = {data}  dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "2016" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "2017" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} />
               </>
+              <span>{data}</span>
             </section>
           </>
         )
@@ -84,7 +88,7 @@ const Asker = ({}) => {
             <h1>Выберите цвет</h1>
             <section className = {styles.askerTypeCar}>
               <>
-              <Button text = "Красный" counter = {counter} setterCount = {setCounter} /> <Button text = "Белый" counter = {counter} setterCount = {setCounter} /> <Button text = "Черный" counter = {counter} setterCount = {setCounter} />
+              <Button text = "Красный" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "Белый" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "Черный" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} />
               </>
             </section>
           </>
@@ -97,7 +101,7 @@ const Asker = ({}) => {
               <h1>Выберите цвет</h1>
               <section className = {styles.askerTypeCar}>
                 <>
-                <Button text = "Красный" counter = {counter} setterCount = {setCounter} /> <Button text = "Белый" counter = {counter} setterCount = {setCounter} /> <Button text = "Черный" counter = {counter} setterCount = {setCounter} />
+                <Button text = "Красный" data = {data}  dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "Белый" data = {data}  dataChanger = {setData} counter = {counter} setterCount = {setCounter} /> <Button text = "Черный" data = {data} dataChanger = {setData} counter = {counter} setterCount = {setCounter} />
                 </>
               </section>
             </>
@@ -109,7 +113,8 @@ const Asker = ({}) => {
           <>
             <h1>Выберите год</h1>
             <section className = {styles.askerTypeCar}>
-              <h1 className = {styles.centerHeading}>Ну типа, все. Все что я хотел Вам показать :)</h1>
+              <h1 className = {styles.centerHeading}>Ну типа, все. Все что я хотел Вам показать :) А это инфа, которую вы выбрали => {data}</h1>
+              <span>{data}</span>
             </section>
           </>
         )
@@ -119,7 +124,7 @@ const Asker = ({}) => {
     return(
 
       <>
-        <h1 className = {styles.centerHeading}>В течении нескольких минут Вам позвонит наш оператор!</h1>
+        <h1 className = {styles.centerHeading}>В течении нескольких минут Вам позвонит наш оператор! </h1>
       </>
 
     )
@@ -127,7 +132,7 @@ const Asker = ({}) => {
 
 }
 
-const Button = ({ text , counter , setterCount , setCallMe}) => {
+const Button = ({ text , counter , data , dataChanger , setterCount , setCallMe}) => {
 
   const handleClick = ( evt ) => {
 
@@ -135,26 +140,27 @@ const Button = ({ text , counter , setterCount , setCallMe}) => {
 
       let count = counter;
 
-      evt.preventDefault();
+        evt.preventDefault();
 
-      setterCount(++count);
+        setterCount(++count);
+        dataChanger([...data,text]);
 
     } else {
 
-      evt.preventDefault();
+        evt.preventDefault();
 
-      setCallMe(true);
+        setCallMe(true);
 
     }
 
   }
 
   return(
-
+    <>
     <button onClick = { handleClick } className = {`${ styles.chooseButton } ${ styles.show }`}>
       {text}
     </button>
-
+    </>
   )
 
 }
